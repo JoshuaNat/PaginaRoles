@@ -14,7 +14,7 @@ class PersonajeController extends Controller
      */
     public function index()
     {
-        //
+        return view('personajes.personajesIndex');
     }
 
     /**
@@ -24,7 +24,7 @@ class PersonajeController extends Controller
      */
     public function create()
     {
-        //
+        return view('personajes.personajesForm');
     }
 
     /**
@@ -46,7 +46,7 @@ class PersonajeController extends Controller
      */
     public function show(Personaje $personaje)
     {
-        //
+        return view('personajes.personajesShow');
     }
 
     /**
@@ -57,7 +57,7 @@ class PersonajeController extends Controller
      */
     public function edit(Personaje $personaje)
     {
-        //
+        return view('personajes.personajesForm');
     }
 
     /**
