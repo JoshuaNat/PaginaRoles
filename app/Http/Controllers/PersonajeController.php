@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Historia;
+use App\Models\Personaje;
 use Illuminate\Http\Request;
 
-class HistoriaController extends Controller
+class PersonajeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class HistoriaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Historia  $historia
+     * @param  \App\Models\Personaje  $personaje
      * @return \Illuminate\Http\Response
      */
-    public function show(Historia $historia)
+    public function show(Personaje $personaje)
     {
         //
     }
@@ -52,10 +52,10 @@ class HistoriaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Historia  $historia
+     * @param  \App\Models\Personaje  $personaje
      * @return \Illuminate\Http\Response
      */
-    public function edit(Historia $historia)
+    public function edit(Personaje $personaje)
     {
         //
     }
@@ -64,10 +64,10 @@ class HistoriaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Historia  $historia
+     * @param  \App\Models\Personaje  $personaje
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Historia $historia)
+    public function update(Request $request, Personaje $personaje)
     {
         //
     }
@@ -75,10 +75,10 @@ class HistoriaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Historia  $historia
+     * @param  \App\Models\Personaje  $personaje
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Historia $historia)
+    public function destroy(Personaje $personaje)
     {
         //
     }
