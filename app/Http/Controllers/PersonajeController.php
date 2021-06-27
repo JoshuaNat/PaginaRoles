@@ -14,7 +14,8 @@ class PersonajeController extends Controller
      */
     public function index()
     {
-        return view('personajes.personajesIndex');
+        $personajes = Personaje::all();
+        return view('personajes.personajesIndex', compact('personajes'));
     }
 
     /**
@@ -35,7 +36,9 @@ class PersonajeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Personaje::create($request->all());
+
+        return redirect()->route('personaje.index');
     }
 
     /**
@@ -46,7 +49,7 @@ class PersonajeController extends Controller
      */
     public function show(Personaje $personaje)
     {
-        return view('personajes.personajesShow');
+        return view('personajes.personajesShow', compact('personaje'));
     }
 
     /**
@@ -57,7 +60,7 @@ class PersonajeController extends Controller
      */
     public function edit(Personaje $personaje)
     {
-        return view('personajes.personajesForm');
+        return view('personajes.personajesForm', compact('personaje'));
     }
 
     /**
@@ -69,7 +72,9 @@ class PersonajeController extends Controller
      */
     public function update(Request $request, Personaje $personaje)
     {
-        //
+        Personaje::where('id', $personaje->id)->update($request->except('_token', '_method'));
+
+        return redirect()->route('personaje.show', $personaje);
     }
 
     /**
@@ -80,6 +85,8 @@ class PersonajeController extends Controller
      */
     public function destroy(Personaje $personaje)
     {
-        //
+        $personaje->delete();
+
+        return redirect()->route('personaje.index');
     }
 }
