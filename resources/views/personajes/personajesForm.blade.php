@@ -13,6 +13,22 @@
 
     <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
 
+        @if ($errors->any())
+
+        <div class="min-w-0 p-4 text-white bg-red-600 rounded-lg shadow-xs">
+            <h4 class="mb-4 font-semibold">
+              Errores
+            </h4>
+            <p>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </p>
+        </div>
+        @endif
+
         @if(isset($personaje))
         <form action="{{ route('personaje.update', $personaje) }}" method="POST"> 
             @method('PATCH')
@@ -25,13 +41,13 @@
         <label class="block text-sm">
             <span class="text-gray-700 dark:text-gray-400">Nombre</span>
                 <input class="block mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                type="text" name="Nombre" id="Nombre" value="{{ $personaje->Nombre ?? ''}}" />
+                type="text" name="Nombre" id="Nombre" value="{{ old('Nombre') ?? $personaje->Nombre ?? ''}}" />
         </label>
 
         <label class="block text-sm">
             <span class="text-gray-700 dark:text-gray-400">Edad</span>
                 <input class="block mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                type="number" min="1" max="99" step="1" name="Edad" id="Edad" value="{{ $personaje->Edad ?? 18}}" />
+                type="number" min="1" max="99" step="1" name="Edad" id="Edad" value="{{ old('Edad') ?? $personaje->Edad ?? 18}}" />
         </label>
 
         <label class="block mt-4 text-sm">
@@ -52,7 +68,7 @@
               rows="3"
               name="Personalidad"
               id="Personalidad"
-            >{{ $personaje->Personalidad ?? 'Aqui va la personalidad'}}</textarea>
+            >{{ old('Personalidad') ?? $personaje->Personalidad ?? 'Aqui va la personalidad'}}</textarea>
         </label>
 
         <label class="block mt-4 text-sm">
@@ -62,7 +78,7 @@
               rows="3"
               name="Historia"
               id="Historia"
-            >{{ $personaje->Historia ?? 'Aqui va la Historia'}}</textarea>
+            >{{ old('Historia') ?? $personaje->Historia ?? 'Aqui va la Historia'}}</textarea>
         </label>
 
         <label class="block mt-4 text-sm">
@@ -72,19 +88,19 @@
               rows="3"
               name="Extras"
               id="Extras"
-            >{{ $personaje->Extras ?? 'Aqui van los extras.'}}</textarea>
+            >{{ old('Extras') ?? $personaje->Extras ?? 'Aqui van los extras.'}}</textarea>
         </label>
 
         <label class="block text-sm">
             <span class="text-gray-700 dark:text-gray-400">ID Creador:</span>
                 <input class="block mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                type="number" min="1" step="1" name="user_id" id="Creador" value="{{ $personaje->user_id ?? 1}}" />
+                type="number" min="1" step="1" name="user_id" id="Creador" value="{{ old('user_id') ?? $personaje->user_id ?? 1}}" />
         </label>
 
         <label class="block text-sm">
             <span class="text-gray-700 dark:text-gray-400">ID Rol:</span>
                 <input class="block mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                type="number" min="1" step="1" name="historia_id" id="Rol" value="{{ $personaje->historia_id ?? 1}}" />
+                type="number" min="1" step="1" name="historia_id" id="Rol" value="{{ old('historia_id') ?? $personaje->historia_id ?? 1}}" />
         </label>
 
         <div>
@@ -94,7 +110,5 @@
 
         </form>
     </div>
-
-        <input type="submit" value="Guardar" />
     </form>
 @endsection

@@ -36,6 +36,14 @@ class PersonajeController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'Nombre' => 'Required|String|Min:2|Max:30',
+            'Edad' => 'Required|Integer|Numeric|gt:0',
+            'Genero' => 'Required',
+            'Personalidad' => 'Required|String|Max:255',
+            'Historia' => 'Required|String|Max:255',
+            'Extras' => 'Required|String|Max:255'
+        ]);
         Personaje::create($request->all());
 
         return redirect()->route('personaje.index');
@@ -60,6 +68,7 @@ class PersonajeController extends Controller
      */
     public function edit(Personaje $personaje)
     {
+
         return view('personajes.personajesForm', compact('personaje'));
     }
 
@@ -72,6 +81,15 @@ class PersonajeController extends Controller
      */
     public function update(Request $request, Personaje $personaje)
     {
+        $request->validate([
+            'Nombre' => 'Required|String|Min:2|Max:30',
+            'Edad' => 'Required|Integer|Numeric|gt:0',
+            'Genero' => 'Required',
+            'Personalidad' => 'Required|String|Max:255',
+            'Historia' => 'Required|String|Max:255',
+            'Extras' => 'Required|String|Max:255'
+        ]);
+        
         Personaje::where('id', $personaje->id)->update($request->except('_token', '_method'));
 
         return redirect()->route('personaje.show', $personaje);

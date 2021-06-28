@@ -1,6 +1,6 @@
             <!-- Search input -->
             <div class="flex justify-center flex-1 lg:mr-32">
-                <div
+              <!--  <div
                   class="relative w-full max-w-xl mr-6 focus-within:text-purple-500"
                 >
                   <div class="absolute inset-y-0 flex items-center pl-2">
@@ -23,5 +23,5 @@
                     placeholder="Search for projects"
                     aria-label="Search"
                   />
-                </div>
+                </div> -->
               </div>
