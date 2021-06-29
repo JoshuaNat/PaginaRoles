@@ -29,7 +29,6 @@ class PersonajeFactory extends Factory
             'Historia' => $this->faker->sentence(),
             'Extras' => $this->faker->sentence(),
             'user_id' => $this->faker->numberBetween(1,1),
-            'historia_id' => $this->faker->numberBetween(1,3),
         ];
     }
 }

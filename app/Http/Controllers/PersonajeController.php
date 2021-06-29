@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Personaje;
+use App\Models\Historia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -62,7 +63,9 @@ class PersonajeController extends Controller
      */
     public function show(Personaje $personaje)
     {
-        return view('personajes.personajesShow', compact('personaje'));
+        
+        $historias = Historia::get();
+        return view('personajes.personajesShow', compact('personaje', 'historias'));
     }
 
     /**
@@ -112,5 +115,12 @@ class PersonajeController extends Controller
         $personaje->delete();
 
         return redirect()->route('personaje.index');
+    }
+
+    public function agregaHistoria(Request $request, Personaje $personaje)
+    {
+       $personaje->historias()->sync($request->historia_id);
+
+       return redirect()->route('personaje.show', $personaje);
     }
 }

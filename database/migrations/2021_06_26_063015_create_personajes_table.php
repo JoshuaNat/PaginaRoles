@@ -22,7 +22,6 @@ class CreatePersonajesTable extends Migration
             $table->text('Historia');
             $table->text('Extras');
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('historia_id')->constrained();
         });
     }
 

@@ -26,4 +26,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+Route::post('personaje/{personaje}/AgregaHistoria', [PersonajeController::class, 'agregaHistoria'])->name('personaje.agregaHistoria');
 Route::resource('personaje', PersonajeController::class)->middleware('auth');
