@@ -20,11 +20,12 @@
       class="flex h-screen bg-gray-50 dark:bg-gray-900"
       :class="{ 'overflow-hidden': isSideMenuOpen}"
     >
+
       <!-- Desktop sidebar -->
       @include('layouts.sidebar-desktop')
 
       <!-- Mobile sidebar -->
-      @include('layouts.sidebar-mobile')
+      @include('layouts.sidebar-mobile')  
 
       <div class="flex flex-col flex-1">
         <header class="z-10 py-4 bg-white shadow-md dark:bg-gray-800">
@@ -87,8 +88,21 @@
                   </template>
                 </button>
               </li>
+              <!--notification menu-->
               {{--@include('layouts.notificaciones')--}}
-              @include('layouts.profile')
+              <!--Profile menu-->
+              @auth
+                @include('layouts.profile')
+              @endauth
+              @guest
+              <div>
+                <a href="{{ route('login') }}"
+                class="px-3 py-1 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-md active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                  Iniciar sesion
+                </a>
+              </div>
+              @endguest
+              
             </ul>
           </div>
         </header>

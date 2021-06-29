@@ -26,4 +26,4 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::resource('personaje', PersonajeController::class);
+Route::resource('personaje', PersonajeController::class)->middleware('auth');
