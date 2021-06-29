@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Personaje;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PersonajeController extends Controller
 {
@@ -14,7 +15,8 @@ class PersonajeController extends Controller
      */
     public function index()
     {
-        $personajes = Personaje::all();
+        //$personajes = Personaje::all();
+        $personajes = Auth::user()->personajes()->get();
         return view('personajes.personajesIndex', compact('personajes'));
     }
 
@@ -44,6 +46,9 @@ class PersonajeController extends Controller
             'Historia' => 'Required|String|Max:255',
             'Extras' => 'Required|String|Max:255'
         ]);
+
+        $request->merge(['user_id' => $request->user()->id]);
+
         Personaje::create($request->all());
 
         return redirect()->route('personaje.index');
@@ -89,6 +94,7 @@ class PersonajeController extends Controller
             'Historia' => 'Required|String|Max:255',
             'Extras' => 'Required|String|Max:255'
         ]);
+
         
         Personaje::where('id', $personaje->id)->update($request->except('_token', '_method'));
 

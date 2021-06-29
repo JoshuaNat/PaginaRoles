@@ -91,11 +91,7 @@
             >{{ old('Extras') ?? $personaje->Extras ?? 'Aqui van los extras.'}}</textarea>
         </label>
 
-        <label class="block text-sm">
-            <span class="text-gray-700 dark:text-gray-400">ID Creador:</span>
-                <input class="block mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                type="number" min="1" step="1" name="user_id" id="Creador" value="{{ old('user_id') ?? $personaje->user_id ?? 1}}" />
-        </label>
+        <!--<input type="hidden" name="user_id" value = "{{ \Auth::id() }}">-->
 
         <label class="block text-sm">
             <span class="text-gray-700 dark:text-gray-400">ID Rol:</span>

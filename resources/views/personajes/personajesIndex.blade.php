@@ -19,6 +19,7 @@
             class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800"
             >
             <th class="px-4 py-3">ID</th>
+            <th class="px-4 py-3">Creador</th>
             <th class="px-4 py-3">Nombre</th>
             <th class="px-4 py-3">Acciones</th>
             </tr>
@@ -32,8 +33,15 @@
                     {{ $personaje->id }}
                 </div>
             </td>
+            <td class="px-4 py-3">
+                <div class="flex items-center text-sm">
+                    {{ $personaje->user->name }}
+                </div>
+            </td>
             <td class="px-4 py-3 text-sm">
+                <div class="flex items-center text-sm">
                 <a href="{{ route('personaje.show', $personaje->id) }}"> {{ $personaje->Nombre }} </a>
+                </div>
             </td>
 
             <td class="px-4 py-3">
