@@ -93,7 +93,7 @@ class PersonajeController extends Controller
         if (! Gate::allows('update-personaje', $personaje)) {
             abort(403);
         }
-        
+
         $request->validate([
             'Nombre' => 'Required|String|Min:2|Max:30',
             'Edad' => 'Required|Integer|Numeric|gt:0',
@@ -117,14 +117,17 @@ class PersonajeController extends Controller
      */
     public function destroy(Personaje $personaje)
     {
+        $this->authorize('delete', $personaje);
         $personaje->delete();
 
         return redirect()->route('personaje.index');
     }
 
     public function agregaHistoria(Request $request, Personaje $personaje)
-    {
-       $personaje->historias()->sync($request->historia_id);
+    {  
+        $this->authorize('vincular', $personaje);
+        
+        $personaje->historias()->sync($request->historia_id);
 
        return redirect()->route('personaje.show', $personaje);
     }
