@@ -17,7 +17,7 @@ class PersonajeController extends Controller
     public function index()
     {
         //$personajes = Personaje::all();
-        $personajes = Auth::user()->personajes;
+        $personajes = Auth::user()->personajes()->with('user:id,name')->get();
         return view('personajes.personajesIndex', compact('personajes'));
     }
 
