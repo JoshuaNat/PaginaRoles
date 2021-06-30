@@ -20,7 +20,7 @@ class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-
       <!-- text-gray-800 dark:text-gray-100 -->
       <a
         class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-        href="../index.html"
+        href="/"
       >
         <svg
           class="w-5 h-5"
@@ -45,7 +45,7 @@ class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-
     <li class="relative px-6 py-3">
       <a
         class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-        href="../modals.html"
+        href="{{ route('personaje.mostrarTodos') }}"
       >
         <svg
           class="w-5 h-5"

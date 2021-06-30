@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PersonajeController;
+use App\Http\Controllers\HistoriaController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -45,5 +46,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+Route::get('personaje/todos', [PersonajeController::class, 'mostrarTodos'])->name('personaje.mostrarTodos');
 Route::post('personaje/{personaje}/AgregaHistoria', [PersonajeController::class, 'agregaHistoria'])->name('personaje.agregaHistoria');
 Route::resource('personaje', PersonajeController::class)->middleware('verified');
+
+Route::resource('historia', HistoriaController::class)->middleware('auth');

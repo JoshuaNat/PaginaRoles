@@ -131,4 +131,10 @@ class PersonajeController extends Controller
 
        return redirect()->route('personaje.show', $personaje);
     }
+
+    public function mostrarTodos()
+    {  
+        $personajes = Personaje::all();
+        return view('personajes.personajesAll', compact('personajes'));
+    }
 }
