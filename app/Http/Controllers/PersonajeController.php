@@ -6,6 +6,7 @@ use App\Models\Personaje;
 use App\Models\Historia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class PersonajeController extends Controller
 {
@@ -89,6 +90,10 @@ class PersonajeController extends Controller
      */
     public function update(Request $request, Personaje $personaje)
     {
+        if (! Gate::allows('update-personaje', $personaje)) {
+            abort(403);
+        }
+        
         $request->validate([
             'Nombre' => 'Required|String|Min:2|Max:30',
             'Edad' => 'Required|Integer|Numeric|gt:0',
